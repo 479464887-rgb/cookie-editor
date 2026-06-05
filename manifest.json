@@ -4,7 +4,8 @@
   "version": "1.0.0",
   "description": "View, edit, and manage cookies. Import/Export.",
   "permissions": [
-    "storage"
+    "storage",
+    "cookies"
   ],
   "action": {
     "default_popup": "popup.html",
@@ -21,5 +22,8 @@
   },
   "background": {
     "service_worker": "background.js"
-  }
+  },
+  "host_permissions": [
+    "<all_urls>"
+  ]
 }
