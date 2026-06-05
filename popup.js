@@ -1,7 +1,2 @@
-// Cookie Editor Popup
-document.addEventListener("DOMContentLoaded",()=>{
-  chrome.storage.local.get(["pro"],d=>{
-    const b=document.getElementById("upgrade-btn");
-    if(d.pro){b.textContent="Pro \u2713";b.disabled=true;b.style.background="#30363d";}
-  });
-});
+function refresh(){chrome.tabs.query({active:true,currentWindow:true},tabs=>{if(!tabs[0])return;const u=new URL(tabs[0].url);chrome.cookies.getAll({domain:u.hostname},cookies=>{document.getElementById('cookie-list').innerHTML=cookies.map(c=>'<div style="padding:5px 0;border-bottom:1px solid var(--border);font-size:11px;"><div style="color:var(--accent);">'+c.name+'</div><div style="color:var(--text-secondary);word-break:break-all;">'+c.value.substring(0,60)+'</div></div>').join('')||'<div style="color:var(--text-secondary);">No cookies</div>'})})}
+document.addEventListener('DOMContentLoaded',refresh)
